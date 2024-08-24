@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 
 posts = [
     {
@@ -53,6 +54,9 @@ def index(request):
 def detail(request, id):
     template = 'blog/detail.html'
     context = {'post': posts[id]}
+    post = next((post for post in posts if post['id'] == id), None)
+    if post is None:
+        raise Http404("The requested resource was not found on this server.")
     return render(request, template, context)
 
 
