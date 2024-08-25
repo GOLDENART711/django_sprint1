@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ object.location }}. {{ post.date }}{% endblock %}
+{% block title %}{{ post.location }}. {{ post.date }}{% endblock %}
 
 {% block content %}
   <div class="container py-5">
@@ -7,18 +7,17 @@
       <ul>
         <li>
           Место: {{ post.location }}
-        </li>   
         </li>
         <li>
-          Дата: {{ post.date }}  <!-- Используйте дату из объекта post -->
+          Дата: {{ post.date }}
         </li>
         <li>
           Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
         </li>
-      </ul>     
+      </ul>
       <p>
-        {{ post.text }}
-      </p>  
-    </article>                
+        {{ post.text|linebreaksbr }}
+      </p>
+    </article>
   </div>
 {% endblock %}
