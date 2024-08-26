@@ -3,21 +3,7 @@
 
 {% block content %}
   <div class="container py-5">
-    <article>
-      <ul>
-        <li>
-          Место: {{ post.location }}
-        </li>
-        <li>
-          Дата: {{ post.date }}
-        </li>
-        <li>
-          Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
-        </li>
-      </ul>
-      <p>
-        {{ post.text|linebreaksbr }}
-      </p>
-    </article>
+    <h1>{{ post.title }}</h1>
+    {% include "includes/post.html" with object=post truncate=False %}
   </div>
 {% endblock %}

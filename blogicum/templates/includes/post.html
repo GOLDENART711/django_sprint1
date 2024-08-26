@@ -1,0 +1,21 @@
+<article>
+    <ul>
+      <li>
+        Место: {{ object.location }}
+      </li>
+      <li>
+        Дата: {{ object.date }}
+      </li>
+      <li>
+        Категория: <a href="{% url 'blog:category_posts' object.category %}">{{ object.category }}</a>
+      </li>
+    </ul>
+    <p>
+      {% if truncate %}
+        {{ object.text|truncatewords:10|linebreaksbr }}
+      {% else %}
+        {{ object.text|linebreaksbr }}
+      {% endif %}
+    </p>
+  </article>
+  
