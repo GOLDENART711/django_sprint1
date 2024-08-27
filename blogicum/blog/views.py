@@ -62,7 +62,7 @@ def detail(request, id):
             f"The requested resource with id {id}"
             "was not found on this server."
         )
-    
+
     context = {'post': post}
     return render(request, template, context)
 
