@@ -44,6 +44,8 @@ posts = [
     },
 ]
 
+posts_dict = {post['id']: post for post in posts}
+
 
 def index(request):
     template = 'blog/index.html'
@@ -53,10 +55,15 @@ def index(request):
 
 def detail(request, id):
     template = 'blog/detail.html'
-    context = {'post': posts[id]}
-    post = next((post for post in posts if post['id'] == id), None)
+    post = posts_dict.get(id)
+
     if post is None:
-        raise Http404("The requested resource was not found on this server.")
+        raise Http404(
+            f"The requested resource with id {id}"
+            "was not found on this server."
+        )
+    
+    context = {'post': post}
     return render(request, template, context)
 
 
