@@ -44,7 +44,7 @@ posts = [
     },
 ]
 
-posts_dict = {post['id']: post for post in posts}
+posts_interim = {post['id']: post for post in posts}
 
 
 def index(request):
@@ -55,7 +55,7 @@ def index(request):
 
 def detail(request, id):
     template = 'blog/detail.html'
-    post = posts_dict.get(id)
+    post = posts_interim.get(id)
 
     if post is None:
         raise Http404(
